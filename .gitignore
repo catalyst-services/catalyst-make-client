@@ -1,0 +1,14 @@
+*.pyc
+__pycache__/
+.venv/
+venv/
+env/
+.env
+.env.local
+*.egg-info/
+dist/
+build/
+.DS_Store
+.idea/
+*.swp
+.catalyst_make_key
