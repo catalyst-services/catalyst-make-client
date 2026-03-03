@@ -8,6 +8,7 @@ Tools for automating Make.com workflow deployment and management for service bus
 - **Pydantic Models** — Type-safe request/response handling
 - **Unit Tests** — Comprehensive test coverage
 - **GitHub Actions** — Automated CI/CD with pytest, ruff, black
+- **uv Package Manager** — Fast, modern Python package management
 
 ## What's Included
 
@@ -25,9 +26,14 @@ Tools for automating Make.com workflow deployment and management for service bus
 ### 1. Install with uv
 
 ```bash
+# Create virtual environment
 uv venv
+
+# Activate it
 source .venv/bin/activate  # or .venv\Scripts\activate on Windows
-uv pip install -e .
+
+# Install project with dev dependencies
+uv pip install -e ".[dev]"
 ```
 
 ### 2. Set Your Make.com API Key
@@ -69,30 +75,27 @@ asyncio.run(main())
 
 ```bash
 # All tests
-pytest
+uv run pytest
 
 # With coverage
-pytest --cov=src
+uv run pytest --cov=src
 
 # Specific test file
-pytest tests/test_client.py
-
-# Watch mode (requires pytest-watch)
-ptw
+uv run pytest tests/test_client.py
 ```
 
 ### 5. Code Quality
 
 ```bash
 # Format code
-black .
+uv run black .
 
 # Check formatting
-black --check .
+uv run black --check .
 
 # Lint
-ruff check .
-ruff check --fix .
+uv run ruff check .
+uv run ruff check --fix .
 ```
 
 ## Development
