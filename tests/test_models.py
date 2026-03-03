@@ -3,11 +3,11 @@
 import pytest
 
 from src.catalyst_make_client.models import (
+    Blueprint,
+    BlueprintModule,
+    Execution,
     Organization,
     Scenario,
-    Execution,
-    BlueprintModule,
-    Blueprint,
 )
 
 

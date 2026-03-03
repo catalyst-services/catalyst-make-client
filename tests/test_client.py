@@ -1,7 +1,7 @@
 """Tests for Make.com API client."""
 
 import pytest
-from unittest.mock import AsyncMock, patch, MagicMock
+from unittest.mock import AsyncMock, patch
 
 from src.catalyst_make_client.client import MakeClient
 from src.catalyst_make_client.models import Organization, Scenario
@@ -33,10 +33,11 @@ async def test_token_loading_from_env(monkeypatch):
 async def test_token_loading_missing():
     """Test error when token is missing."""
     import os
+
     # Ensure env var is not set
     if "MAKE_API_KEY" in os.environ:
         del os.environ["MAKE_API_KEY"]
-    
+
     with pytest.raises(ValueError, match="MAKE_API_KEY not found"):
         MakeClient()
 
