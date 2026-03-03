@@ -3,6 +3,6 @@
 __version__ = "0.1.0"
 
 from .client import MakeClient
-from .models import Organization, Scenario, Execution
+from .models import Execution, Organization, Scenario
 
 __all__ = ["MakeClient", "Organization", "Scenario", "Execution"]

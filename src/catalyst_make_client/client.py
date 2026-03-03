@@ -63,9 +63,7 @@ class MakeClient:
         headers.update(kwargs.pop("headers", {}))
 
         url = f"{self.BASE_URL}{endpoint}"
-        async with self.session.request(
-            method, url, headers=headers, **kwargs
-        ) as resp:
+        async with self.session.request(method, url, headers=headers, **kwargs) as resp:
             if resp.status == 401:
                 raise ValueError("Invalid API token")
             if resp.status >= 400:
@@ -89,9 +87,7 @@ class MakeClient:
         data = await self._request("GET", f"/scenarios/{scenario_id}")
         return Scenario(**data)
 
-    async def list_executions(
-        self, scenario_id: int, limit: int = 50
-    ) -> list[Execution]:
+    async def list_executions(self, scenario_id: int, limit: int = 50) -> list[Execution]:
         """List executions for a scenario."""
         data = await self._request(
             "GET", f"/scenarios/{scenario_id}/executions", params={"limit": limit}

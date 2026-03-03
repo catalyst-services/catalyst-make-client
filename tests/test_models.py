@@ -1,7 +1,5 @@
 """Tests for Pydantic models."""
 
-import pytest
-
 from src.catalyst_make_client.models import (
     Blueprint,
     BlueprintModule,

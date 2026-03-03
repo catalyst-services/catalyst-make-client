@@ -2,34 +2,34 @@
 
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class Organization(BaseModel):
     """Make.com Organization model."""
 
+    model_config = ConfigDict(extra="allow")
+
     id: int
     name: str
     slug: str | None = None
 
-    class Config:
-        extra = "allow"
-
 
 class Scenario(BaseModel):
     """Make.com Scenario (workflow) model."""
+
+    model_config = ConfigDict(extra="allow")
 
     id: int
     name: str
     description: str | None = None
     enabled: bool = True
 
-    class Config:
-        extra = "allow"
-
 
 class Execution(BaseModel):
     """Make.com Scenario Execution model."""
+
+    model_config = ConfigDict(extra="allow")
 
     id: int
     scenario_id: int
@@ -37,9 +37,6 @@ class Execution(BaseModel):
     start_time: str | None = None
     end_time: str | None = None
     errors: list[dict[str, Any]] = Field(default_factory=list)
-
-    class Config:
-        extra = "allow"
 
 
 class BlueprintModule(BaseModel):
@@ -55,11 +52,10 @@ class BlueprintModule(BaseModel):
 class Blueprint(BaseModel):
     """Workflow blueprint for deployment."""
 
+    model_config = ConfigDict(extra="allow")
+
     name: str
     description: str
     modules: list[BlueprintModule]
     connections_required: list[str]
     implementation_hours: int
-
-    class Config:
-        extra = "allow"
